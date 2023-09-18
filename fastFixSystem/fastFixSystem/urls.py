@@ -16,7 +16,17 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from fastFix_app import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+
+    path('cliente/', views.ClienteList.as_view(template_name = "cliente/index.html"), name='leer'),
+
+    path('cliente/crear/', views.ClienteCreate.as_view(template_name = "cliente/crear.html"), name='crear'),
+
+    path('cliente/detalle/<int:pk>/', views.ClienteDetail.as_view(template_name = "cliente/detalle.html"), name='detalle'),
+
+    path('cliente/actualizar/<int:pk>/', views.ClienteUpdate.as_view(template_name = "cliente/actualizar.html"), name='actualizar'),
+
 ]
