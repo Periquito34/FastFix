@@ -1,0 +1,78 @@
+<head>
+
+    {# Cargamos la librería #} 
+    {% load bootstrap4 %} 
+  
+    {# CSS Bootstrap #} 
+    {% bootstrap_css %} 
+    
+    {# Widget Tweaks #}
+    {% load widget_tweaks %}
+  
+    {# Archivos #}
+    {% load static %} <!-- STATIC_URL -->
+  
+</head>
+
+
+<body>
+<div align="left" class="btn_crear mb-3">
+    <a href="../crearEmpleado" type="button" class="btn btn-primary">Crear</a>
+    <a href="../leerCliente" type="button" class="btn btn-primary">ir a vista cliente</a> <!-- Boton crear -->
+    <a href="../" type="button" class="btn btn-primary">Volver al inicio</a> <!-- Boton crear -->
+  </div>
+  
+  <table class="table table-striped table-hover">
+    <thead>
+      <tr>
+        <th width="35%">Nombre Empresa</th>
+        <th>Informacion</th>
+        <th>Ubicacion</th>
+        <th>Contacto</th>
+        <th>Horario</th>
+        <th>Estado</th>
+      </tr>
+    </thead>
+    <tbody>
+    
+    <!-- Recorremos los objetos o registros que tenemos en nuestra tabla 'postres' y los listamos -->
+    {% for cliente in object_list %}
+      <tr>
+        <td>{{ empleado.nombreEmpresa }}</td>
+        <td>{{ empleado.infoEmpresa }}</td>
+        <td>{{ empleado.ubicacionEmpresa }}</td>
+        <td>{{ empleado.contactoEmpresa }}</td>
+        <td>{{ empleado.horario }}</td>
+        <td>
+          {% if empleado.estadoEmpresa %}
+              Inactiva
+          {% else %}
+              Activa
+          {% endif %}
+      </td>
+        <td>
+  
+          <form method="POST" action="/eliminarEmpleado/{{cliente.id}}/">
+            {% csrf_token %}
+            <div class="btn-group">
+   
+              <!-- Creamos 3 botones que son ver, Editar y Eliminar, nos sirven para gestionar nuestros registros o postres -->
+              <a href="../detalleEmpleado/{{cliente.id}}" title="Ver" type="button" class="btn btn-success">Ver </a>
+              <a href="../actualizarEmpleado/{{cliente.id}}" title="Editar" type="button" class="btn btn-primary">Editar </a>
+              <button class="btn btn-danger" onclick="return eliminarCliente();" type="submit">
+                Eliminar
+              </button>
+            </div>
+          </form>  
+        </td>
+      </tr>
+    {% endfor %}
+   
+    </tbody>
+  </table>
+
+  <!-- Al final del body -->
+  {# JS y jQuery Bootstrap #}
+  {% bootstrap_javascript jquery='full' %} 
+
+</body>

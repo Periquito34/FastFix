@@ -1,156 +1,105 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.views.generic import ListView, DetailView 
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.urls import reverse
 from django.contrib import messages 
 from django.contrib.messages.views import SuccessMessageMixin 
 from django import forms
-from .models import Solicitud, Cliente, CategoriaServicio, Empleado
+from .models import Cliente,Empleado
+from .forms import RegistroClienteForm
+from django.views import View
+from django.contrib.auth.views import LoginView
 
+
+def index(request):
+    return render(request, 'main/index.html')
+
+def login(request):
+    return render(request, 'cliente/login.html')
 
 # View Cliente
 
-class Cliente(ListView):
+class RegistroClienteView(View):
+    template_name = 'registro_cliente.html'
+
+    def get(self, request):
+        form = RegistroClienteForm()
+        return render(request, self.template_name, {'form': form})
+    
+    def post(self, request):
+        form = RegistroClienteForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('leerCliente')  # Reemplaza 'pagina_de_inicio' con la URL a donde deseas redirigir
+        return render(request, self.template_name, {'form': form})
+
+
+class ClienteList(ListView):
     model = Cliente
 
-class ClienteCrear(SuccessMessageMixin, CreateView):
+class ClienteCreate(SuccessMessageMixin, CreateView):
     model= Cliente
     form= Cliente
     fields= '__all__'
     success_message= 'Cliente creado exitosamente'
 
     def get_success_url(self):
-        return reverse('leer')
+        return reverse('leerCliente')
     
-class ClienteActualizar(SuccessMessageMixin, UpdateView):
+class ClienteUpdate(SuccessMessageMixin, UpdateView):
     model= Cliente
     form= Cliente
     fields= '__all__'
     success_message= 'Cliente actualizado exitosamente'
 
     def get_success_url(self):
-        return reverse('leer')
+        return reverse('leerCliente')
 
-class ClienteEliminar(SuccessMessageMixin, DeleteView):
+class ClienteDelete(SuccessMessageMixin, DeleteView):
     model= Cliente
     form= Cliente
     fields= '__all__'
     success_message= 'Cliente eliminado exitosamente'
 
     def get_success_url(self):
-        return reverse('leer')
+        return reverse('leerCliente')
     
 class ClienteDetail(DetailView):
     model= Cliente
 
 
-# View CategoriaServicio
-
-class CategoriaServicio(ListView):
-    model = CategoriaServicio
-
-class CategoriaServicioCrear(SuccessMessageMixin, CreateView):
-    model= CategoriaServicio
-    form= CategoriaServicio
-    fields= '__all__'
-    success_message= 'CategoriaServicio creado exitosamente'
-
-    def get_success_url(self):
-        return reverse('leer')
-
-class CategoriaServicioActualizar(SuccessMessageMixin, UpdateView):
-    model= CategoriaServicio
-    form= CategoriaServicio
-    fields= '__all__'
-    success_message= 'CategoriaServicio actualizado exitosamente'
-
-    def get_success_url(self):
-        return reverse('leer')
-
-class CategoriaServicioEliminar(SuccessMessageMixin, DeleteView):
-    model= CategoriaServicio
-    form= CategoriaServicio
-    fields= '__all__'
-    success_message= 'CategoriaServicio eliminado exitosamente'
-
-    def get_success_url(self):
-        return reverse('leer')
-
-class CategoriaServicioDetail(DetailView):
-    model= CategoriaServicio
-
 # View Empleado
 
-class Empleado(ListView):
+class EmpleadoList(ListView):
     model = Empleado
 
-class EmpleadoCrear(SuccessMessageMixin, CreateView):
+class EmpleadoCreate(SuccessMessageMixin, CreateView):
     model= Empleado
     form= Empleado
     fields= '__all__'
     success_message= 'Empleado creado exitosamente'
 
     def get_success_url(self):
-        return reverse('leer')
+        return reverse('leerEmpleado')
     
-class EmpleadoActualizar(SuccessMessageMixin, UpdateView):
+class EmpleadoUpdate(SuccessMessageMixin, UpdateView):
     model= Empleado
     form= Empleado
     fields= '__all__'
     success_message= 'Empleado actualizado exitosamente'
 
     def get_success_url(self):
-        return reverse('leer')
+        return reverse('leerEmpleado')
     
-class EmpleadoEliminar(SuccessMessageMixin, DeleteView):
+class EmpleadoDelete(SuccessMessageMixin, DeleteView):
     model= Empleado
     form= Empleado
     fields= '__all__'
     success_message= 'Empleado eliminado exitosamente'
 
     def get_success_url(self):
-        return reverse('leer')
+        return reverse('leerEmpleado')
     
 class EmpleadoDetail(DetailView):
     model= Empleado
-
-
-# View Solicitud
-
-class Solicitud(ListView):
-    model = Solicitud
-
-class SolicitudCrear(SuccessMessageMixin, CreateView):
-    model= Solicitud
-    form= Solicitud
-    fields= '__all__'
-    success_message= 'Solicitud creado exitosamente'
-
-    def get_success_url(self):
-        return reverse('leer')
-
-class SolicitudActualizar(SuccessMessageMixin, UpdateView):
-    model= Solicitud
-    form= Solicitud
-    fields= '__all__'
-    success_message= 'Solicitud actualizado exitosamente'
-
-    def get_success_url(self):
-        return reverse('leer')
-
-class SolicitudEliminar(SuccessMessageMixin, DeleteView):
-    model= Solicitud
-    form= Solicitud
-    fields= '__all__'
-    success_message= 'Solicitud eliminado exitosamente'
-
-    def get_success_url(self):
-        return reverse('leer')
-
-class SolicitudDetail(DetailView):
-    model= Solicitud
-    
-
-
-
 

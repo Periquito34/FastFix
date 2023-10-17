@@ -1,0 +1,64 @@
+<head>
+
+    {# Cargamos la librería #} 
+    {% load bootstrap4 %} 
+  
+    {# CSS Bootstrap #} 
+    {% bootstrap_css %} 
+    
+    {# Widget Tweaks #}
+    {% load widget_tweaks %}
+  
+    {# Archivos #}
+    {% load static %} <!-- STATIC_URL -->
+  
+  </head>
+
+<body>
+
+<form method="post" enctype="multipart/form-data">
+
+    <!-- Pasamos el 'csrf_token' de seguridad para poder crear un nuevo registro -->
+    {% csrf_token %}
+    
+    <!-- {{ form.as_p }} -->
+    <div class="form-group">
+        <label for="nombreEmpresa" class="txt_negrita">Nombre Empresa</label>
+        {{ form.nombreEmpresa|add_class:"form-control" }} <!-- Usamos la librería 'widget_tweaks' para crear esta caja de texto -->
+    </div>
+
+    <div class="form-group">
+        <label for="infoEmpresa" class="txt_negrita">Informacion Empresa</label>
+        {{ form.infoEmpresa|add_class:"form-control" }} <!-- Usamos la librería 'widget_tweaks' para crear esta caja de texto --> 
+    </div>
+
+    <div class="form-group">
+        <label for="UbicacionEmpresa" class="txt_negrita">Ubicacion Empresa</label>
+        {{ form.ubicacionEmpresa|add_class:"form-control" }} <!-- Usamos la librería 'widget_tweaks' para crear esta caja de texto --> 
+    </div>
+    <div class="form-group">
+        <label for="contactoEmpresa" class="txt_negrita">Contacto Empresa</label>
+        {{ form.contactoEmpresa|add_class:"form-control" }} <!-- Usamos la librería 'widget_tweaks' para crear esta caja de texto -->
+    </div>
+    <div class="form-group">
+        <label for="horario" class="txt_negrita">Horario Empresa</label>
+        {{ form.horario|add_class:"form-control" }} <!-- Usamos la librería 'widget_tweaks' para crear esta caja de texto --> 
+    </div>
+
+    <div class="form-group">
+        <div class="form-check">
+            <input type="checkbox" class="form-check-input" id="estadoEmpresa" name="estadoEmpresa" {% if empleado.estadoEmpresa %}checked{% endif %}>
+            <label class="form-check-label" for="estadoEmpresa">Estado Empresa</label>
+        </div>
+    </div>
+
+    <button href="/leerEmpleado" type="submit" class="btn btn-primary">Aceptar</button>
+    <a href="/leerEmpleado" type="submit" class="btn btn-primary">Cancelar</a>
+
+</form>
+
+<!-- Al final del body -->
+  {# JS y jQuery Bootstrap #}
+  {% bootstrap_javascript jquery='full' %} 
+
+</body>

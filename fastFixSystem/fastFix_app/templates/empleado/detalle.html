@@ -1,0 +1,35 @@
+<head>
+
+    {# Cargamos la librería #} 
+    {% load bootstrap4 %} 
+  
+    {# CSS Bootstrap #} 
+    {% bootstrap_css %} 
+    
+    {# Widget Tweaks #}
+    {% load widget_tweaks %}
+  
+    {# Archivos #}
+    {% load static %} <!-- STATIC_URL -->
+  
+  </head>
+
+<body>
+
+<h4>Detalles</h4>
+
+    <p><span class="txt_negrita">Nombre Empresa:</span> <br> {{object.nombreEmpresa}}</p>
+    <p><span class="txt_negrita">Informacion:</span> <br> {{object.infoEmpresa}}</p>
+    <p><span class="txt_negrita">Ubicacion:</span> <br> {{object.ubicacionEmpresa}}</p>
+    <p><span class="txt_negrita">Contacto:</span> <br> {{object.contactoEmpresa}}</p>
+    <p><span class="txt_negrita">Horario:</span> <br> {{object.horario}}</p>
+    <p><span class="txt_negrita">Estado Empresa:</span> <br> {% if object.estadoEmpresa %}Activa{% else %}Inactiva{% endif %}</p>
+    <!-- Botón para volver a la vista principal (Home) -->
+    <a href="/leerEmpleado" type="submit" class="btn btn-primary">Volver</a>
+
+
+    <!-- Al final del body -->
+{# JS y jQuery Bootstrap #}
+{% bootstrap_javascript jquery='full' %} 
+
+</body>

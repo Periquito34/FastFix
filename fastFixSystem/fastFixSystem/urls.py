@@ -16,17 +16,30 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from fastFix_app import views
+from fastFix_app.views import ClienteList, ClienteCreate, ClienteDetail, ClienteUpdate, ClienteDelete, EmpleadoList, EmpleadoCreate, EmpleadoDetail, EmpleadoUpdate, EmpleadoDelete, RegistroClienteView
+import fastFix_app.views as views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('',views.index, name='mainPage'),
+    path('login/', views.login, name='login'),
 
-    path('cliente/', views.ClienteList.as_view(template_name = "cliente/index.html"), name='leer'),
+    #URLS de Cliente
 
-    path('cliente/crear/', views.ClienteCreate.as_view(template_name = "cliente/crear.html"), name='crear'),
+    path('leerCliente/', ClienteList.as_view(template_name = "cliente/index.html"), name='leerCliente'),
+    path('crearCliente/', ClienteCreate.as_view(template_name = "cliente/crear.html"), name='crearCliente'),
+    path('detalleCliente/<int:pk>/', ClienteDetail.as_view(template_name = "cliente/detalle.html"), name='detalleCliente'),
+    path('actualizarCliente/<int:pk>/', ClienteUpdate.as_view(template_name = "cliente/actualizar.html"), name='actualizarCliente'),
+    path('eliminarCliente/<int:pk>/', ClienteDelete.as_view(template_name = "cliente/eliminar.html"), name='eliminarCliente'),
+    path('registroCliente/',RegistroClienteView.as_view(template_name= "cliente/registro.html"), name='registroCliente'),
+    
 
-    path('cliente/detalle/<int:pk>/', views.ClienteDetail.as_view(template_name = "cliente/detalle.html"), name='detalle'),
+    #URSL de Empleado
 
-    path('cliente/actualizar/<int:pk>/', views.ClienteUpdate.as_view(template_name = "cliente/actualizar.html"), name='actualizar'),
-
+    path('leerEmpleado/', EmpleadoList.as_view(template_name = "empleado/index.html"), name='leerEmpleado'),
+    path('crearEmpleado/', EmpleadoCreate.as_view(template_name = "empleado/crear.html"), name='crearEmpleado'),
+    path('detalleEmpleado/<int:pk>/', EmpleadoDetail.as_view(template_name = "empleado/detalle.html"), name='detalleEmpleado'),
+    path('actualizarEmpleado/<int:pk>/', EmpleadoUpdate.as_view(template_name = "empleado/actualizar.html"), name='actualizarEmpleado'),
+    path('eliminarEmpleado/<int:pk>/', EmpleadoDelete.as_view(template_name = "empleado/eliminar.html"), name='eliminarEmpleado'),
+    
 ]

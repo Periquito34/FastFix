@@ -1,23 +1,23 @@
 version: '3.8'
 services:
   db:
-    container_name: pg_container
+    container_name: pg_container_fast_fix
     image: postgres
     hostname: postgreServer
     restart: always
     environment:
       POSTGRES_USER: root
       POSTGRES_PASSWORD: root
-      POSTGRES_DB: productos
+      POSTGRES_DB: FastFix
     ports:
-      - "5432:5432"
+      - "5431:5432"
   pgadmin:
-    container_name: pgadmin4_container
+    container_name: pgadmin4_container_fast_fix
     image: dpage/pgadmin4
     restart: always
     environment:
       PGADMIN_DEFAULT_EMAIL: admin@admin.com
       PGADMIN_DEFAULT_PASSWORD: root
     ports:
-      - "5050:80"
+      - "5051:80"
   

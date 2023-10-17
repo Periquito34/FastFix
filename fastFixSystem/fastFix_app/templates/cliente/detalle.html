@@ -1,0 +1,35 @@
+<head>
+
+    {# Cargamos la librería #} 
+    {% load bootstrap4 %} 
+  
+    {# CSS Bootstrap #} 
+    {% bootstrap_css %} 
+    
+    {# Widget Tweaks #}
+    {% load widget_tweaks %}
+  
+    {# Archivos #}
+    {% load static %} <!-- STATIC_URL -->
+  
+  </head>
+
+<body>
+
+<h4>Detalles</h4>
+
+    <p><span class="txt_negrita">Nombre:</span> <br> {{object.nombre}}</p>
+    <p><span class="txt_negrita">Apellido:</span> <br> {{object.apellido}}</p>
+    <p><span class="txt_negrita">Telefono:</span> <br> {{object.telefono}}</p>
+    <p><span class="txt_negrita">Correo:</span> <br> {{object.correo}}</p>
+    
+
+    <!-- Botón para volver a la vista principal (Home) -->
+    <a href="/leerCliente" type="submit" class="btn btn-primary">Volver</a>
+
+
+    <!-- Al final del body -->
+{# JS y jQuery Bootstrap #}
+{% bootstrap_javascript jquery='full' %} 
+
+</body>

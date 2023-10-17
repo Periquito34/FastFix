@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+
+    <title>FastFix</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Lato:wght@100;300&family=Montserrat:wght@200;700&family=Oswald:wght@300;500&family=Poppins:wght@100;200;300;400;500;600;700&family=Quicksand:wght@300;400;600&family=Roboto:wght@100;400;500;700;900&display=swap');
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Roboto', sans-serif;
+        }
+
+        header {
+            background-color: #3498db;
+            color: #fff;
+            text-align: center;
+            padding: 20px 0;
+            display: flex;
+            flex-direction: wrap;
+            align-items: center;
+        }
+
+        header h1 {
+            margin-left: 4rem;
+        }
+
+        header nav {
+            margin-left: 6rem;
+            margin-right: 4rem;
+        }
+
+        nav ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        nav ul li {
+            margin-right: 20px;
+        }
+        
+        #ingresar {
+            position: absolute;
+            right: 2%;
+        }
+
+        nav ul li:last-child {
+            margin-right: 0;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: #fff;
+            font-weight: bold;
+            font-size: 18px;
+            transition: color 0.3s;
+        }
+
+        nav ul li a:hover {
+            color: #e8e3f3;
+        }
+        
+        #carousel-container {
+            max-width: 800px; 
+            margin: 0 auto; 
+        }
+
+        .carousel-inner .carousel-item img {
+            width: 100%;
+            height: 500px;
+            border-radius: 5px;
+        }
+        
+        .container {
+            width: 80%;
+            margin: 80px auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+            background-color: rgb(230, 230, 230);
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); 
+        }
+
+        .container::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            background-color: rgba(0, 0, 0, 0.05); 
+            z-index: -1;
+        }
+        h2 {
+            font-size: 24px;
+            color: #333;
+        }
+
+        ul {
+            list-style-type: disc;
+            margin-left: 20px;
+        }
+
+        body {
+            background-color: #E8FDFF;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100%25' height='100%25' viewBox='0 0 800 400'%3E%3Cdefs%3E%3CradialGradient id='a' cx='396' cy='281' r='514' gradientUnits='userSpaceOnUse'%3E%3Cstop offset='0' stop-color='%23FFFFFF'/%3E%3Cstop offset='1' stop-color='%23E8FDFF'/%3E%3C/radialGradient%3E%3ClinearGradient id='b' gradientUnits='userSpaceOnUse' x1='400' y1='148' x2='400' y2='333'%3E%3Cstop offset='0' stop-color='%233498DB' stop-opacity='0'/%3E%3Cstop offset='1' stop-color='%233498DB' stop-opacity='0.5'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect fill='url(%23a)' width='800' height='400'/%3E%3Cg fill-opacity='0.4'%3E%3Ccircle fill='url(%23b)' cx='267.5' cy='61' r='300'/%3E%3Ccircle fill='url(%23b)' cx='532.5' cy='61' r='300'/%3E%3Ccircle fill='url(%23b)' cx='400' cy='30' r='300'/%3E%3C/g%3E%3C/svg%3E");
+            background-attachment: fixed;
+            background-size: cover;
+        }
+        
+        section {
+            margin-bottom: 20px; 
+        }
+
+        main {
+            background-color: transparent; /* Fondo transparente */
+        }
+      
+        footer {
+          background-color: #3498db;
+          padding: 20px;
+          text-align: center;
+          font-family: 'Roboto', sans-serif;
+         }
+
+    hr {
+        margin: 10px 0;
+        border: 0;
+        border-top: 1px solid #ccc;
+        width: 100%;
+      }
+
+
+    .footer-content {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-wrap: wrap;
+        }
+
+    .footer-left,.footer-right {
+        flex: 1;
+        text-align: left;
+        padding: 0 20px;
+    }
+
+    .footer-left h3,
+    .footer-right h3 {
+      font-size: 18px;
+      color: black;
+    }
+
+    .footer-left p,
+     .footer-right p {
+        font-size: 14px;
+        color: whitesmoke;
+    }
+
+    .social-media a {
+        margin-right: 10px;
+    }
+
+    .social-media img {
+      width: 20px;
+      height: 20px;
+    }
+
+    a {
+      color: whitesmoke;
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+      color: #666;
+    }
+      
+    </style>
+</head>
+<body>
+    <header>
+        <h1>FastFix</h1>
+        <nav>
+            <ul>
+                <li><a href="#inicio">Inicio</a></li>
+                <li><a href="#servicios">Servicios</a></li>
+                <li><a href="#contacto">Contacto</a></li>
+                <li id="ingresar"><a href="../login">Ingresar</a></li>
+            </ul>
+        </nav>
+        
+    </header>
+
+    <main>
+        <div class="container">
+            <section>
+                <h2>Acerca de Nosotros</h2>
+                <p>En FastFix, nos enorgullece ser el puente entre tus necesidades de reparación en el hogar y los expertos que pueden solucionarlas. Somos una empresa dedicada a facilitar soluciones de alta calidad para tus reparaciones y mantenimiento en el entorno residencial.</p>
+            </section>
+
+            <section>
+                <h2>Nuestra Mision</h2>
+                <p>Nuestra misión es simplificar y agilizar el proceso de encontrar servicios de reparación confiables y profesionales para tu hogar. Creemos que todos merecen un espacio seguro y funcional, y estamos comprometidos en hacer que la búsqueda y programación de servicios de reparación sean más accesibles y sin complicaciones.</p>
+            </section>
+    
+            <section>
+                <h2>Tenemos empresas asociadas que te facilitan los siguientes servicios: </h2>
+                <ul>
+                    <li>Reparación de electrodomésticos</li>
+                    <li>Reparación de electrónica</li>
+                    <li>Carpintería</li>
+                    <li>Limpieza</li>
+                    <li>Todo lo que necesites</li>
+                </ul>
+            </section>
+        </div>
+
+        <div class="container mt-5">
+            <div id="myCarousel" class="carousel slide" data-bs-ride="carousel">
+                <!-- Indicadores -->
+                <ol class="carousel-indicators">
+                    <li data-bs-target="#myCarousel" data-bs-slide-to="0" class="active"></li>
+                    <li data-bs-target="#myCarousel" data-bs-slide-to="1"></li>
+                    <li data-bs-target="#myCarousel" data-bs-slide-to="2"></li>
+                </ol>
+    
+                <!-- Slides del carrusel -->
+                <div class="carousel-inner">
+                    <div class="carousel-item active">
+                        <img src="https://doncarpintero.es/wp-content/uploads/2017/01/dc-1.jpg" alt="Carpinteria">
+                    </div>
+                    <div class="carousel-item">
+                        <img src="https://www.arqhys.com/wp-content/uploads/2012/12/Instalaciones-de-plomeria.jpg" alt="Plomeria">
+                    </div>
+                    <div class="carousel-item">
+                        <img src="https://www.serviciotecnicooficialmajadahonda.es/wp-content/uploads/layerslider/home/tecnico-1024x540.jpg" alt="Electrodomésticos">
+                    </div>
+                </div>
+    
+                <!-- Flechas de navegación -->
+                <a class="carousel-control-prev" href="#myCarousel" role="button" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Anterior</span>
+                </a>
+                <a class="carousel-control-next" href="#myCarousel" role="button" data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Siguiente</span>
+                </a>
+            </div>
+        </div>
+    
+    
+        </main>
+  <footer>
+    <hr>
+    <div class="footer-content">
+        <div class="footer-left">
+            <h3>Sobre Nosotros</h3>
+            <p>¡Conectamos el poder de la reparación y el mantenimiento en la palma de tu mano!</p>
+            <h3>Nuestras redes sociales</h3>
+            <div class="social-media">
+                <a href="https://www.facebook.com" target="_blank"><img src="https://cdn.icon-icons.com/icons2/1995/PNG/512/facebook_internet_media_network_social_icon_123257.png" alt="Facebook"></a>
+                <a href="https://twitter.com" target="_blank"><img src="https://cdn.icon-icons.com/icons2/1995/PNG/512/chat_communication_media_social_twitter_icon_123256.png" alt="Twitter"></a>
+                <a href="https://www.instagram.com" target="_blank"><img src="https://cdn.icon-icons.com/icons2/1995/PNG/512/instagram_internet_media_network_social_icon_123258.png" alt="Instagram"></a>
+                <a href="https://www.linkedin.com" target="_blank"><img src="https://cdn.icon-icons.com/icons2/1995/PNG/512/chat_communication_linked_in_media_social_icon_123255.png" alt="LinkedIn"></a>
+            </div>
+        </div>
+        <div class="footer-right">
+            <div class="contact-info">
+                <h3>Contacto</h3>
+                <p>Email: <a href="mailto:fastfixcontact@gmail.com">fastfixcontact@gmail.com</a></p>
+                <p>Teléfono: <a href="tel:########">300 450 6734</a></p>
+            </div>
+            <div class="visit-us">
+                <h3>Visítanos</h3>
+                <p>Estamos ubicados en Cra. 122 #6-65, Barrio Pance, Cali, Valle del Cauca
+                    <div class="social-media">
+                        <a href="https://www.google.com/maps/place/Universidad+de+San+Buenaventura+Cali/@3.344976,-76.5444787,15z/data=!4m6!3m5!1s0x8e30a1f4bf2a445b:0x527eac67838ce690!8m2!3d3.344976!4d-76.5444787!16s%2Fg%2F1pwgtgwpq?entry=ttu" target="_blank"><img src="https://cdn.icon-icons.com/icons2/1129/PNG/512/placeholderblackshapeforlocalizationonmaps_79861.png" alt="Maps"></a>
+                    </div>
+                </p>
+
+            </div>
+        </div>
+    </div>
+    <hr>
+    <p class="footer-info"> 2023 FastFix®. Fines estudiantiles.</p>
+</footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"
+        crossorigin="anonymous"></script>
+
+        <script>
+            document.addEventListener("DOMContentLoaded", function () {
+                new bootstrap.Carousel(document.querySelector("#myCarousel"), {
+                    interval: 3000 // Intervalo en milisegundos (3 segundos en este ejemplo)
+                });
+            });
+        </script>
+
+
+</body>
+</html>
