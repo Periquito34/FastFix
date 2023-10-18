@@ -1,4 +1,7 @@
+
 # FastFix
+
+Requisito tener Docker bien instalado en tu pc.
 
 1. Eliminar la carpeta enviroment.
 2. Instalar venv cono pip install virtualenv
