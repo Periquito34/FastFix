@@ -8,7 +8,8 @@
 6. Ingresar el siguiente comando docker-compose up -d
 7. Realizar esta instalacion pip3 install psycopg2-binary==2.9.5
 8. Abrir Pgadmin y crear el servidor
-9. Realizar las migraciones python manage.py makemigrations fastFix_app
-10. python manage.py migrate
-11. Correr el proyecto el siguiente comando: python manage.py runserver 0.0.0.0:8888
-12. y ya esta.
+9. ingresar el siguiente comando cd .\fastFixSystem\
+10. Realizar las migraciones python manage.py makemigrations fastFix_app
+11. python manage.py migrate
+12. Correr el proyecto el siguiente comando: python manage.py runserver 0.0.0.0:8888
+13. y ya esta.
