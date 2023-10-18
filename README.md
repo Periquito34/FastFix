@@ -1,7 +1,12 @@
-
 # FastFix
+AUTORES:
+Andrés Felipe Rico, Juan David Díaz, Juan José Núñez
 
-Requisito tener Docker bien instalado en tu pc.
+PROPÓSITO DEL SISTEMA:
+El propósito de FastFix es proporcionar a los usuarios una plataforma interactiva y accesible que brinde la búsqueda y reserva de una amplia gama de servicios, desde reparaciones y trabajos de carpintería hasta servicios de limpieza y plomería. Nuestra aplicación prototipo tiene como objetivo principal ofrecer a los clientes un catálogo completo de empresas y profesionales calificados que prestan estos servicios esenciales.
+
+DESPLIEUGE E INSTALACIÓN DE DEPENDENCIAS:
+Como requisito debdes de tener Docker bien instalado en tu pc.
 
 1. Eliminar la carpeta enviroment.
 2. Instalar venv cono pip install virtualenv
