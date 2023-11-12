@@ -8,7 +8,6 @@ El propósito de FastFix es proporcionar a los usuarios una plataforma interacti
 DESPLIEUGE E INSTALACIÓN DE DEPENDENCIAS:
 Como requisito debdes de tener Docker bien instalado en tu pc.
 
-1. Eliminar la carpeta enviroment.
 2. Instalar venv cono pip install virtualenv
 3. Crear un entorno python -m venv enviroment
 4. activar el entorno enviroment/Scripts/activate
