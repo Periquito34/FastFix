@@ -22,7 +22,7 @@ import fastFix_app.views as views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('',views.index, name='mainPage'),
-    path('login/', views.login, name='login'),
+    path('login/', views.signin, name='login'),
 
     #URLS de Cliente
 
@@ -31,7 +31,7 @@ urlpatterns = [
     path('detalleCliente/<int:pk>/', ClienteDetail.as_view(template_name = "cliente/detalle.html"), name='detalleCliente'),
     path('actualizarCliente/<int:pk>/', ClienteUpdate.as_view(template_name = "cliente/actualizar.html"), name='actualizarCliente'),
     path('eliminarCliente/<int:pk>/', ClienteDelete.as_view(template_name = "cliente/eliminar.html"), name='eliminarCliente'),
-    path('registroCliente/',RegistroClienteView.as_view(template_name= "cliente/registro.html"), name='registroCliente'),
+    path('registroCliente/',ClienteCreate.as_view(template_name= "cliente/registro.html"), name='registroCliente'),
     
 
     #URSL de Empleado

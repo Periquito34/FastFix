@@ -1,3 +1,4 @@
+from imaplib import _Authenticator
 from django.shortcuts import render, redirect
 from django.views.generic import ListView, DetailView 
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
@@ -9,6 +10,9 @@ from .models import Cliente,Empleado
 from .forms import RegistroClienteForm
 from django.views import View
 from django.contrib.auth.views import LoginView
+from django.contrib.auth.models import User
+from django.http import HttpResponse
+from django.contrib.auth import authenticate, login
 
 
 def index(request):
@@ -103,3 +107,34 @@ class EmpleadoDelete(SuccessMessageMixin, DeleteView):
 class EmpleadoDetail(DetailView):
     model= Empleado
 
+
+def signup(request):
+    if request.method == 'POST':
+        fname = request.POST['fname']
+        lname = request.POST['lname']
+        email = request.POST['email']
+        phone = request.POST['phone']
+        password = request.POST['password']
+
+        myuser = User.objects.create_user(email, email, password)
+        myuser.first_name = fname
+        myuser.last_name = lname
+        myuser.save()
+
+        return redirect('leerCliente')
+    
+    return render(request, 'cliente/login.html')
+
+def signin(request):
+    if request.method == 'POST':
+        email = request.POST['email']
+        password = request.POST['password']
+
+        user = authenticate(username=email, password=password)
+
+        if user is not None:
+            login(request, user)
+            return redirect('leerCliente')
+        else:
+            return redirect('login')
+    return render(request, 'cliente/login.html')

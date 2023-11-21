@@ -18,6 +18,35 @@
 
 <h4>Detalles</h4>
 
+<table>
+  <thead>
+    <tr>
+      <th>Nombre Empresa</th>
+      <th>Informacion</th>
+      <th>Ubicacion</th>
+      <th>Contacto</th>
+      <th>Horario</th>
+      <th>Estado</th>
+    </tr>
+  <tbody>
+    {% for empleado in object_list %}
+    <tr>
+      <td>{{object.nombreEmpresa}}</td>
+      <td>{{object.infoEmpresa}}</td>
+      <td>{{object.ubicacionEmpresa}}</td>
+      <td>{{object.contactoEmpresa}}</td>
+      <td>{{object.horario}}</td>
+      <td>
+        {% if object.estadoEmpresa %}
+            Inactiva
+        {% else %}
+            Activa
+        {% endif %}
+    </td>
+    </tr>
+  </tbody>
+  
+</table>
     <p><span class="txt_negrita">Nombre Empresa:</span> <br> {{object.nombreEmpresa}}</p>
     <p><span class="txt_negrita">Informacion:</span> <br> {{object.infoEmpresa}}</p>
     <p><span class="txt_negrita">Ubicacion:</span> <br> {{object.ubicacionEmpresa}}</p>
